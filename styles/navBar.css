@@ -1,0 +1,46 @@
+body {
+  margin: 2px;
+}
+.div-principal-navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2.5px solid black;
+  border-radius: 1rem;
+  padding: .3rem 10rem;
+}
+.div-logo-navBar {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.div-logo-navBar p {
+  font-size: 2rem;
+  color: #fac710;
+  margin: 0;
+}
+.p-dashboard {
+  font-size: 1rem;
+  text-decoration: overline 2px;
+}
+.div-links-navBar {
+  display: flex;
+  gap: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link {
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all .4s;
+}
+
+.link:hover {
+  text-decoration: underline #fac710 3px;
+}
