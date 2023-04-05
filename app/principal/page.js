@@ -1,9 +1,9 @@
-import NavBar from "../components/navBar"
+import NavBar from '../components/navBar'
 
-export default function PrincipalPage() {
-    return(
+export default function PrincipalPage () {
+    return (
         <>
-            <NavBar/>  
+            <NavBar />
         </>
     )
 }

@@ -1,13 +1,14 @@
 body {
-  margin: 2px;
+  margin: 0px;
 }
 .div-principal-navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2.5px solid black;
-  border-radius: 1rem;
-  padding: .3rem 10rem;
+  border-bottom: 2.5px solid black;
+  padding: 0.3rem 10rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .div-logo-navBar {
   display: flex;
@@ -38,7 +39,7 @@ a {
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
 .link:hover {
