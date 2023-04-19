@@ -1,13 +1,13 @@
-import Link from 'next/link';
-import '../../styles/navBar.css';
-import { Caveat } from '@next/font/google';
+import Link from 'next/link'
+import '../../styles/navBar.css'
+import { Caveat } from '@next/font/google'
 
 const caveat = Caveat({
   weigth: ['800'],
   preload: false
-});
+})
 
-export default function NavBar() {
+export default function NavBar () {
   return (
     <section className='div-principal-navBar'>
       <div className='div-logo-navBar'>
@@ -26,5 +26,5 @@ export default function NavBar() {
         </Link>
       </div>
     </section>
-  );
+  )
 }

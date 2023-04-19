@@ -1,51 +1,22 @@
-import React from 'react'
+
 import NavBar from '../components/navBar'
 import '../../styles/productos.css'
-import Link from 'next/link'
-import ProductCard from '../components/productCard'
+import ProductList from '../components/productList'
 
-const product = {
-  id: 1,
-  name: 'Hamburguesa Americana',
-  price: 1350,
-  image: '/../public/image/burguerAmericana.png'
-}
+export default async function Productos () {
+  const productsFetch = () => {
+    const results = fetch('http://localhost:3500/api/products', { cache: 'no-store' })
+      .then(res => res.json())
+    return results
+  }
 
-export default function Productos() {
-    return (
-        <>
-            <NavBar />
-            <main className='main-productos'>
-                <section className='section-botones-productos'>
-                    <ul className='lista-botones'>
-                        <li className='li-buscador'>
-                            <form>
-                                <div class="container-input">
-                                    <input type='text' placeholder='Lomo Completo...' name='text' className='input' />
-                                    <svg fill='#000000' width='20px' height='20px' viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg'>
-                                        <path d='M790.588 1468.235c-373.722 0-677.647-303.924-677.647-677.647 0-373.722 303.925-677.647 677.647-677.647 373.723 0 677.647 303.925 677.647 677.647 0 373.723-303.924 677.647-677.647 677.647Zm596.781-160.715c120.396-138.692 193.807-319.285 193.807-516.932C1581.176 354.748 1226.428 0 790.588 0S0 354.748 0 790.588s354.748 790.588 790.588 790.588c197.647 0 378.24-73.411 516.932-193.807l516.028 516.142 79.963-79.963-516.142-516.028Z' fill-rule='evenodd'></path>
-                                    </svg>
-                                </div>
-
-                            </form>
-                        </li>
-                        <li className='li-botones'>
-                            <Link href='/productos/agregar-productos'>Agregar productos</Link>
-                        </li>
-                        <li className='li-botones'>
-                            <Link href='/productos/stock'>Modificar Stock</Link>
-                        </li>
-                    </ul>
-                </section>
-                <section className='section-lista-produsctos'>
-                    <ProductCard {...product} />
-                    <ProductCard {...product} />
-                    <ProductCard {...product} />
-                    <ProductCard {...product} />
-                    <ProductCard {...product} />
-                    <ProductCard {...product} />
-                </section>
-            </main>
-        </>
-    )
+  const products = await productsFetch()
+  return (
+    <>
+      <NavBar />
+      <main className='main-productos'>
+        <ProductList {...products} />
+      </main>
+    </>
+  )
 }

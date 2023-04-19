@@ -1,9 +1,12 @@
+* {
+  scroll-behavior: smooth;
+}
 .main-productos {
   width: 70%;
   margin: auto;
   background-color: rgb(247, 247, 247);
   padding: 1rem;
-  height: 90vh;
+  height: 95vh;
 }
 
 .lista-botones {
@@ -16,31 +19,44 @@
 }
 
 /* clases para el buscador */
-.container-input {
-  position: relative;
+.input-group {
+  display: flex;
+  align-items: center;
 }
 
 .input {
-  width: 12rem;
-  padding: 10px 0px 10px 40px;
-  border-radius: 9999px;
-  border: solid 2px #333;
-  transition: all 0.2s ease-in-out;
+  min-height: 2.5rem;
+  max-width: 150px;
+  padding: 0 1rem;
+  color: black;
+  font-size: 15px;
+  border: 2px solid #fac710;
+  border-radius: 1rem 0 0 1rem;
+  background-color: transparent;
+}
+
+.button--submit {
+  min-height: 2.75rem;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  background-color: #fac710;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #f7d457;
+}
+
+.input:focus, .input:focus-visible {
+  border-color: #d3a500;
   outline: none;
-  opacity: 0.8;
-  transition: all 0.3s;
 }
 
-.input:focus {
-  border: solid 2px #fac710;
-}
-
-.container-input svg {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translate(0, -50%);
-}
 
 /* F botones */
 
@@ -73,8 +89,9 @@
 
 .section-lista-produsctos {
   width: 100%;
+  height: 42.5rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: wrap row;
   justify-content: flex-start;
   gap: 1.2rem;
@@ -109,6 +126,8 @@
 .imagen-producto {
   width: 100%;
   height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: 1rem;
@@ -172,3 +191,37 @@
 }
 
 /* F productCard */
+
+
+.number-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.ul-number-list {
+  display: flex;
+  list-style: none;
+}
+
+.li-number-page {
+  position: relative;
+  font-size: 1.2em;
+  margin: .7rem;
+  padding: .5rem .7rem;
+  cursor: pointer;
+}
+
+.li-number-page:hover, .li-number-page.activo {
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: #FAC82F;
+}
+
+/* Clases interactivas*/
+.hidden {
+  display: none;
+}

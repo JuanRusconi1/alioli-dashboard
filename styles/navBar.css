@@ -2,13 +2,17 @@ body {
   margin: 0px;
 }
 .div-principal-navBar {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  background-color: white;
   align-items: center;
   border-bottom: 2.5px solid black;
   padding: 0.3rem 10rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    z-index: 500;
 }
 .div-logo-navBar {
   display: flex;
