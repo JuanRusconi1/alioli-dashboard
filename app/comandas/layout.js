@@ -1,7 +1,8 @@
-import { Inter, Roboto_Mono } from '@next/font/google'
+import { Roboto_Mono } from '@next/font/google'
+import NavBar from '../components/navBar'
 
 export const metadata = {
-  title: 'Ali oli - Dashboard',
+  title: 'Ali oli - Comandas',
   description: 'Dashboard for ali oli delivery restorant'
 }
 
@@ -19,7 +20,10 @@ export default function RootLayout ({ children }) {
         <meta name='description' content='Web site created using create-react-app' />
         <title>{metadata.title}</title>
       </head>
-      <body className={robotoMono.className}>{children}</body>
+      <body className={robotoMono.className}>
+        <NavBar />
+        {children}
+        </body>
     </html>
   )
 }

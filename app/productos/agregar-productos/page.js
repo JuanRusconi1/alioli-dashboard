@@ -1,4 +1,3 @@
-import NavBar from '../../components/navBar'
 import ProductForm from '../../components/ProductForm'
 
 export default async function AgregarProductosPage () {
@@ -10,7 +9,6 @@ export default async function AgregarProductosPage () {
   const fetchRequest = 'http://localhost:3500/api/products/create'
   return (
     <>
-      <NavBar />
       <main>
         <ProductForm {...categories} request={fetchRequest} />
       </main>

@@ -1,5 +1,4 @@
 import ProductForm from '@component/app/components/ProductForm'
-import NavBar from '@component/app/components/navBar'
 
 export default async function ProductoId ({ params }) {
   const { id } = params
@@ -18,7 +17,6 @@ export default async function ProductoId ({ params }) {
   const fetchRequest = `http://localhost:3500/api/products/update/${id}`
   return (
     <>
-      <NavBar />
       <main>
         <ProductForm {...categories} oldData={data} request={fetchRequest} />
       </main>

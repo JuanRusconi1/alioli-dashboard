@@ -27,7 +27,6 @@ export default function ProductForm (props) {
     formData.append('description', description)
     formData.append('categoryId', category)
     formData.append('image', image)
-
     fetch(request, {
       method: 'POST',
       body: formData
@@ -44,7 +43,8 @@ export default function ProductForm (props) {
       <form className='form-añadir-producto' onSubmit={(handleSubmit)}>
         <div className='div-input'>
           <label htmlFor='name'>Nombre del producto</label>
-          <input className='input'
+          <input
+            className='input'
             type='text'
             id='name'
             name='name'
@@ -55,7 +55,8 @@ export default function ProductForm (props) {
         </div>
         <div className='div-input'>
           <label htmlFor='price'>Precio</label>
-          <input className='input'
+          <input
+            className='input'
             type='number'
             id='price'
             name='price'
@@ -66,7 +67,8 @@ export default function ProductForm (props) {
         </div>
         <div className='div-input'>
           <label htmlFor='description'>Descripción</label>
-          <textarea className='input'
+          <textarea
+            className='input'
             rows='5'
             id='description'
             name='description'
@@ -77,7 +79,8 @@ export default function ProductForm (props) {
         </div>
         <div className='div-select'>
           <label htmlFor='categories'>Categoria</label>
-          <select id='categories'
+          <select
+            id='categories'
             name='category'
             value={category}
             onChange={(e) => {
