@@ -28,7 +28,7 @@ export default function ProductCard (props) {
         <p className='p-precio-producto'>${props.price}</p>
       </div>
       <div className='div-botones-producto'>
-        <button className='boton-eliminar' value={props.id} onClick={handleClick}>Eliminar</button>
+        <div className='boton-eliminar' value={props.id} onClick={handleClick}>Eliminar</div>
         <Link className='boton-modificar' href={`/productos/modificar-producto/${props.id}`}>
           Modificar
         </Link>

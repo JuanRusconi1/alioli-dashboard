@@ -1,5 +1,5 @@
 'use client'
-import '../../styles/comandas.css'
+import '../../styles/formComandas.css'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 

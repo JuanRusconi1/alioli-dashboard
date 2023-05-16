@@ -4,7 +4,6 @@
 .main-productos {
   width: 70%;
   margin: auto;
-  background-color: rgb(247, 247, 247);
   padding: 1rem;
   height: 95vh;
 }
@@ -64,6 +63,7 @@
   display: inline-block;
   padding: 0.7rem;
   background-color: white;
+  border: 2px solid #fac710;
   border-radius: 2rem;
   transition: 0.3s all;
 }
@@ -103,13 +103,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border: 2px #fac710 solid;
   border-radius: 1rem;
   background-color: white;
   width: 230px;
   height: 310px;
   padding: 1rem 0.5rem;
   transition: all 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .article-producto:hover {

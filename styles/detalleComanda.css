@@ -4,23 +4,147 @@ main {
   align-items: center;
 }
 .div-card {
-  border: solid 1px black;
-  width: 70%;
-  margin: 5rem;
-  z-index: 100;
-  height: 30rem;
+  width: 45%;
+  padding: .7rem;
+  margin-top: 5rem;
+  min-height: 20rem;
+  border-radius: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.div-card-detail {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 98%;
+  box-shadow: rgba(0, 0, 0, 0.24) 1px 2px 6px;
+  min-height: 18rem;
+  margin: .3rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+}
+
+.div-info-client {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: .5px solid gainsboro;
+}
+
+.client-title, .sale-title {
+  width: 100%;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  background-color: white;
+  border-bottom: gainsboro 2px solid;
+  padding: .5rem 0;
+  margin-bottom: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.client-content {
+  width: 100%;
+  background-color: white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: none;
+  padding-bottom: .5rem;
+}
+.client-content p {
+  padding: .7rem;
+  margin: 0;
+}
+
+.div-info-sale {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  border: .5px solid gainsboro;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sale-title {
+  border-bottom: .5px solid gainsboro;
+}
+
+
+.table-sale {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.table-sale  th{
+  padding: .5rem;
+  border: 1px solid gainsboro;
+}
+
+.row-item-sale td {
+  text-align: center;
+  padding: .5rem;
+  border: 1px solid gainsboro;
+}
+
+.total, .total-value {
+  text-align: center;
+  padding: .5rem;
+  font-weight: bold;
+}
+
+
 
 .div-buttons {
   display: flex;
-  flex-direction: column;
-  width: 10rem;
+  justify-content: flex-end;
 }
 
 .button-card {
+  display: flex;
   text-align: left;
-  margin: .4rem 1rem;
-  padding: .4rem 1rem;
-  border-bottom-left-radius: 1rem;
-  border-top-left-radius: 1rem;
+  align-items: center;
+  margin: .4rem .5rem;
+  padding: .4rem .5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all .5s ease;
+  font-weight: bold;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  opacity: .8;
+}
+
+.button-card:hover {
+  transform: translateY(-3px);
+  opacity: 1.2;
+}
+
+.button-card:active {
+  transform: scale(.95);
+}
+
+.button-card svg {
+  margin-right: .2rem;
+}
+
+.home {
+  background-color: #fac710;
+  border: #fac710 solid 1px;
+}
+
+.delete {
+  background-color: tomato;
+  border: tomato solid 1px;
+}
+
+.print {
+  background-color: #68b5f5;
+  border: #68b5f5 solid 1px;
 }
