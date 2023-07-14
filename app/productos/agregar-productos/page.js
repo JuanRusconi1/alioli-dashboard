@@ -2,7 +2,7 @@ import ProductForm from '../../components/ProductForm'
 
 export default async function AgregarProductosPage () {
   const fetchCategories = () => {
-    return fetch('http://localhost:3500/api/products/categories')
+    return fetch('http://localhost:3500/api/products/categories', { cache: 'no-store' })
       .then(res => res.json())
   }
   const categories = await fetchCategories()

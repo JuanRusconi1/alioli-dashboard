@@ -1,0 +1,234 @@
+.main {
+  width: 70%;
+  margin: auto;
+  padding: 1rem;
+  height: 90vh;
+}
+
+.sectionBotones {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  list-style: none;
+  padding-right: 2rem;
+  margin: 1rem 0;
+}
+
+/* clases para el buscador */
+.inputGroup {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  min-height: 2.5rem;
+  max-width: 150px;
+  padding: 0 1rem;
+  color: black;
+  font-size: 15px;
+  border: 2px solid #fac710;
+  border-radius: 1rem 0 0 1rem;
+  background-color: transparent;
+}
+
+.buttonSubmit {
+  min-height: 2.75rem;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  background-color: #fac710;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttonSubmit:hover {
+  background-color: #f7d457;
+}
+
+.input:focus,
+.input:focus-visible {
+  border-color: #d3a500;
+  outline: none;
+}
+
+.sectionSaleList {
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  margin: 0 auto;
+  flex-flow: wrap row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* Boton Agregar Comanda */
+
+.buttonAdd {
+  color: black;
+  display: inline-block;
+  padding: 0.7rem;
+  background-color: white;
+  border: 2px solid #fac710;
+  border-radius: 2rem;
+  transition: 0.3s all;
+}
+
+.buttonAdd:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+  background-color: #fac710;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.buttonAdd:active {
+  transform: scale(0.99);
+  transform: translateY(-2px);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+
+/* Clases para SaleCard */
+
+.articleSale {
+  width: 35rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: white;
+  transition: all 0.3s;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.articleSale:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.divUpInfo,
+.divDownInfo {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 2rem;
+}
+
+.divButtonCard {
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonCardDelete {
+  text-align: center;
+  background-color: tomato;
+  width: 6.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.3rem 0;
+  border-radius: 1rem;
+  transition: all 0.4s;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.buttonCardDetail {
+  text-align: center;
+  background-color: #fac710;
+  width: 6.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.3rem 0;
+  border-radius: 1rem;
+  transition: all 0.4s;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.buttonCardDetail:hover, .buttonCardDelete:hover {
+  transform: translateY(-3px);
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.buttonCardDetail:active, .buttonCardDelete:active {
+  transform: scale(0.9);
+}
+
+.errorMessage {
+  color: tomato;
+  font-weight: bold;
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* Clases para los botones de paginación*/
+
+.numberList {
+
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  right: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonList {
+  background-color: white;
+  border: solid 2px #fac710;
+  padding: .2rem .5rem;
+  color: black;
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.buttonList:hover {
+  background-color: #fac710;
+  transform: translateY(-2px);
+}
+
+.buttonList:active {
+  background-color: #fac710;
+  transform: translateY(0px);
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.inputNumberList {
+  width: 2rem;
+  text-align: center;
+  padding: .3rem .5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: .5rem;
+  margin: 0 .5rem;
+}
+
+.inputNumberList::-webkit-inner-spin-button,
+.inputNumberList::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+.inputNumberList { -moz-appearance:textfield; }
+
+/* Clases interactivas */
+.hidden {
+  display: none;
+}

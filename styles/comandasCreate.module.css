@@ -1,9 +1,9 @@
-.contendor-form {
+.contendorForm {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-.sale-form {
+.saleForm {
   width: 30rem;
   height: 40rem;
   display: flex;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-.div-form-client {
+.divFormClient {
   width: 80%;
   margin: 1rem;
   display: flex;
@@ -24,13 +24,25 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.div-form-client input, select {
+.divFormClientInput, .divFormProductsInput, .select {
   margin: .6rem 0;
   padding: .3rem;
   border-radius: .5rem;
 }
 
-.div-form-products {
+.divFormClientInput::-webkit-inner-spin-button,
+.divFormClientInput::-webkit-outer-spin-button,
+.divFormProductsInput::-webkit-inner-spin-button,
+.divFormProductsInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+.divFormClientInput { -moz-appearance:textfield; }
+.divFormProductsInput { -moz-appearance:textfield; }
+
+
+
+.divFormProducts {
   width: 80%;
   display: flex;
   flex-flow: column nowrap;
@@ -40,20 +52,14 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.div-form-products input, select {
-  margin: .6rem  0;
-  padding: .3rem;
-  border-radius: .5rem;
-}
-
-.div-buttons {
+.divButtons {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin: 1rem;
 }
 
-.div-buttons button {
+.button {
   padding: .7rem;
   background-color: #fac710;
   border: 1px solid #fac710;
@@ -61,40 +67,41 @@
   font-weight: bold;
   transition: all .5s;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
-.div-buttons button:hover { 
+.button:hover { 
   color: black;
   background-color: #fac710;
   box-shadow: #fac710 0 4px 15px;
   transform: translateY(-2px);
 }
 
-.div-buttons button:active {
+.button:active {
   box-shadow: none;
   transform: scale(.95);
 }
 
-.order-preview {
+.orderPreview {
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 20rem;
+  width: 21rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   min-height: 25rem;
   margin: 4rem 2rem; 
 }
 
-.order-preview ul {
+.orderPreviewUL {
   list-style: none;
   padding: .3rem 1rem;
 }
 
-.order-preview li {
+.li {
   margin: .4rem 0;
 }
 
-.valor-total {
+.valorTotal {
   display: flex;
   justify-content: flex-end;
   position: absolute;

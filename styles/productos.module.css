@@ -1,23 +1,21 @@
-
-main {
+.mainProductos {
   width: 70%;
   margin: auto;
   padding: 1rem;
-  height: 90vh;
+  height: 95vh;
 }
 
-.section-botones {
+.listaBotones {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 2rem;
   list-style: none;
   padding-right: 2rem;
-  margin: 1rem 0;
 }
 
 /* clases para el buscador */
-.input-group {
+.inputGroup {
   display: flex;
   align-items: center;
 }
@@ -33,9 +31,9 @@ main {
   background-color: transparent;
 }
 
-.button--submit {
+.buttonSubmit {
   min-height: 2.75rem;
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   border: none;
   border-radius: 0 1rem 1rem 0;
   background-color: #fac710;
@@ -43,34 +41,22 @@ main {
   font-weight: bold;
   font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color .3s ease-in-out;
 }
 
-.button--submit:hover {
+.buttonSubmit:hover {
   background-color: #f7d457;
 }
 
-.input:focus,
-.input:focus-visible {
+.input:focus, .input:focus-visible {
   border-color: #d3a500;
   outline: none;
 }
 
-.section-sale-list {
-  width: 90%;
-  height: 45.5rem;
-  display: flex;
-  margin: 0 auto;
-  align-items: flex-start;
-  flex-flow: wrap column;
-  justify-content: flex-start;
-  gap: 1.2rem;
-}
 
-/* Boton Agregar Comanda */
+/* F botones */
 
-.button-add {
-  color: black;
+.liBotones {
   display: inline-block;
   padding: 0.7rem;
   background-color: white;
@@ -79,7 +65,7 @@ main {
   transition: 0.3s all;
 }
 
-.button-add:hover {
+.liBotones:hover {
   transform: translateY(-5px);
   cursor: pointer;
   background-color: #fac710;
@@ -88,81 +74,122 @@ main {
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
-.button-add:active {
+.liBotones:active {
   transform: scale(0.99);
   transform: translateY(-2px);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
+.liBotones a {
+  color: black;
+}
 
-/* Clases para SaleCard */
+.sectionListaProductos {
+  width: 100%;
+  height: 42.5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: wrap row;
+  justify-content: flex-start;
+  gap: 1.2rem;
+}
+/* estilos para productCard */
 
-.article-sale {
-  width: 35rem;
-  height: 8rem;
+.articleProducto {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   border-radius: 1rem;
   background-color: white;
+  width: 230px;
+  height: 310px;
+  padding: 1rem 0.5rem;
   transition: all 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
+.articleProducto:hover {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
-.article-sale:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.divImagenProducto {
+  width: 220px;
+  height: 150px;
+  border-radius: 1rem;
 }
 
-.div-up-info,
-.div-down-info {
-  width: 80%;
+.imagenProducto {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem;
+  border: 2px #fac710 solid;
+}
+
+.divP {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 0.2rem 2rem;
 }
 
-.div-button-card {
-  gap: 1.5rem;
+.nombreProducto,
+.precioProducto {
+  margin: 0.5rem 0;
+  font-size: 1em;
+}
+
+.divBotonesProducto {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.button-card {
+  justify-content: space-evenly;
   text-align: center;
+}
+
+.botonEliminar {
   width: 6.5rem;
   font-size: 1rem;
   font-weight: bold;
+  background-color: tomato;
+  color: white;
+  padding: 0.3rem 0;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.botonModificar {
+  width: 6.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #fac710;
   color: white;
   padding: 0.3rem 0;
   border-radius: 1rem;
   transition: all 0.4s;
-  cursor: pointer;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.delete {
-  background-color: tomato;
-}
-
-.detail {
-  background-color: #fac710;
-}
-
-.button-card:hover {
+.botonEliminar:hover,
+.botonModificar:hover {
   transform: translateY(-3px);
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.button-card:active {
+.botonEliminar:active,
+.botonModificar:active {
   transform: scale(0.9);
 }
 
-.error-message {
+/* F productCard */
+
+.errorMessage {
   color: tomato;
   font-weight: bold;
   font-size: 1.3rem;
@@ -170,57 +197,35 @@ main {
   text-align: center;
 }
 
-/* Clases para los botones de paginación*/
-
-.number-list {
-  width: 100%;
+.numberList {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   margin-top: 1rem;
 }
 
-.button-list {
-  background-color: white;
-  border: solid 2px #fac710;
-  padding: .2rem .5rem;
-  color: black;
-  border-radius: .5rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.ulNumberList {
+  display: flex;
+  list-style: none;
+}
+
+.liNumberPage, .liNumberPageActivo {
+  position: relative;
+  font-size: 1.2em;
+  margin: .7rem;
+  padding: .5rem .7rem;
   cursor: pointer;
-  transition: all .3s ease;
 }
 
-.button-list:hover {
-  background-color: #fac710;
-  transform: translateY(-2px);
+.liNumberPage:hover, .liNumberPageActivo {
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: #FAC82F;
 }
 
-.button-list:active {
-  background-color: #fac710;
-  transform: translateY(0px);
-  transform: scale(0.98);
-  box-shadow: none;
-}
-
-.input-number-list {
-  width: 2rem;
-  text-align: center;
-  padding: .3rem .5rem;
-  font-weight: bold;
-  font-size: 1.3rem;
-  border-radius: .5rem;
-  margin: 0 .5rem;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
-input[type=number] { -moz-appearance:textfield; }
-
-/* Clases interactivas */
+/* Clases interactivas*/
 .hidden {
   display: none;
 }

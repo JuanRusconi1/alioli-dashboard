@@ -1,32 +1,66 @@
-'use client'
+import styles from '../../styles/comandas.module.css'
 import Link from 'next/link'
-import { useState } from 'react'
+import { Toaster, toast } from 'react-hot-toast'
 
 export default function SaleCard (props) {
-  const [style, setStyle] = useState('article-sale')
-
+  const { setFetch } = props
   const handleDelete = () => {
+    toast.loading('Eliminando comanda')
     fetch(`http://localhost:3500/api/sales/delete/${props.id}`)
       .then(res => {
         if (res.ok) {
-          setStyle('hidden')
+          toast.success('Comanda eliminada correctamente')
+          setTimeout(() => {
+            setFetch(true)
+          }, 2000)
+        } else {
+          toast.error('Ocurrio un error, recarga la pagina')
         }
       })
   }
 
   return (
-    <article className={style}>
-      <div className='div-up-info'>
-        <p className='p-date'>Fecha: {props.date}</p>
-        <p className='p-value'>Total: ${props.total}</p>
+    <article className={styles.articleSale}>
+      <div className={styles.divUpInfo}>
+        <p>Fecha: {props.date}</p>
+        <p>Total: ${props.total}</p>
       </div>
-      <div className='div-down-info'>
-        <p className='p-buyer-name'>Nombre: {props.buyerName}</p>
-        <div className='div-button-card'>
-          <div className='button-card delete' onClick={handleDelete}>Eliminar</div>
-          <Link href={`/comandas/detalle/${props.id}`} className='button-card detail'>Detalle</Link>
+      <div className={styles.divDownInfo}>
+        <p>Nombre: {props.buyerName}</p>
+        <div className={styles.divButtonCard}>
+          <div className={styles.buttonCardDelete} onClick={handleDelete}>Eliminar</div>
+          <Link href={`/comandas/detalle/${props.id}`} className={styles.buttonCardDetail}>Detalle</Link>
         </div>
       </div>
+      <Toaster
+        position='bottom-right'
+        toastOptions={{
+          success: {
+            duration: 3000,
+            position: 'bottom-right',
+            style: {
+              border: '2px solid #28a745',
+              fontWeight: 'bold'
+            }
+          },
+          error: {
+            position: 'bottom-right',
+            duration: 3000,
+            style: {
+              border: 'solid 2px tomato',
+              fontWeight: 'bold'
+            }
+          },
+          loading: {
+            position: 'bottom-right',
+            duration: 3000,
+            style: {
+              border: 'solid 2px gainsboro',
+              fontWeight: 'bold'
+            }
+          }
+        }}
+      />
     </article>
   )
 }

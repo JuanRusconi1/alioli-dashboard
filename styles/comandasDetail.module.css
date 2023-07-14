@@ -1,30 +1,30 @@
-main {
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.div-card {
+.divCard {
   width: 45%;
-  padding: .7rem;
+  padding: 1.5rem;
   margin-top: 5rem;
   min-height: 20rem;
   border-radius: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.div-card-detail {
+.divCardDetail {
   display: flex;
   justify-content: space-evenly;
   max-width: 98%;
   box-shadow: rgba(0, 0, 0, 0.24) 1px 2px 6px;
   min-height: 18rem;
   margin: .3rem auto;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   display: flex;
 }
 
-.div-info-client {
+.divInfoClient {
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ main {
   border: .5px solid gainsboro;
 }
 
-.client-title, .sale-title {
+.clientTitle, .saleTitle {
   width: 100%;
   font-weight: bold;
   display: block;
@@ -47,7 +47,7 @@ main {
   border-top-right-radius: 1rem;
 }
 
-.client-content {
+.clientContent {
   width: 100%;
   background-color: white;
   border-bottom-left-radius: 1rem;
@@ -55,12 +55,12 @@ main {
   border-top: none;
   padding-bottom: .5rem;
 }
-.client-content p {
+.clientContentP {
   padding: .7rem;
   margin: 0;
 }
 
-.div-info-sale {
+.divInfoSale {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -70,12 +70,12 @@ main {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.sale-title {
+.saleTitle {
   border-bottom: .5px solid gainsboro;
 }
 
 
-.table-sale {
+.tableSale {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
@@ -83,18 +83,18 @@ main {
   border-bottom-right-radius: 1rem;
 }
 
-.table-sale  th{
+.tableSaleTH {
   padding: .5rem;
   border: 1px solid gainsboro;
 }
 
-.row-item-sale td {
+.rowItemSaleTD {
   text-align: center;
   padding: .5rem;
   border: 1px solid gainsboro;
 }
 
-.total, .total-value {
+.total, .totalValue {
   text-align: center;
   padding: .5rem;
   font-weight: bold;
@@ -102,12 +102,12 @@ main {
 
 
 
-.div-buttons {
+.divButtons {
   display: flex;
   justify-content: flex-end;
 }
 
-.button-card {
+.buttonCardHome, .buttonCardDelete, .buttonCardPrint {
   display: flex;
   text-align: left;
   align-items: center;
@@ -121,30 +121,30 @@ main {
   opacity: .8;
 }
 
-.button-card:hover {
+.buttonCardHome:hover, .buttonCardDelete:hover, .buttonCardPrint:hover {
   transform: translateY(-3px);
   opacity: 1.2;
 }
 
-.button-card:active {
+.buttonCardHome:active, .buttonCardDelete:active, .buttonCardPrint:active {
   transform: scale(.95);
 }
 
-.button-card svg {
+.buttonCardSVG {
   margin-right: .2rem;
 }
 
-.home {
+.buttonCardHome {
   background-color: #fac710;
   border: #fac710 solid 1px;
 }
 
-.delete {
+.buttonCardDelete {
   background-color: tomato;
   border: tomato solid 1px;
 }
 
-.print {
+.buttonCardPrint {
   background-color: #68b5f5;
   border: #68b5f5 solid 1px;
 }

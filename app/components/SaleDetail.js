@@ -1,4 +1,4 @@
-import '../../styles/detalleComanda.css'
+import styles from '../../styles/comandasDetail.module.css'
 import SaleDetailButtons from './saleDetailButtons'
 
 export default async function SaleDetail ({ id }) {
@@ -8,40 +8,40 @@ export default async function SaleDetail ({ id }) {
   }
   const { data } = await orderFetch()
   return (
-    <main>
-      <div className='div-card'>
-        <div className='div-card-detail'>
-          <div className='div-info-client'>
-            <p className='client-title'>Datos del cliente</p>
-            <div className='client-content'>
-              <p>Nombre: {data.buyerName}</p>
-              <p>Numero de telefono: {data.phoneNumber}</p>
-              <p>Forma de pago: {data.paymentType}</p>
-              <p>Fecha: {data.date}</p>
+    <main className={styles.main}>
+      <div className={styles.divCard}>
+        <div className={styles.divCardDetail}>
+          <div className={styles.divInfoClient}>
+            <p className={styles.clientTitle}>Datos del cliente</p>
+            <div className={styles.clientContent}>
+              <p className={styles.clientContentP}>Nombre: {data.buyerName}</p>
+              <p className={styles.clientContentP}>Numero de telefono: {data.phoneNumber}</p>
+              <p className={styles.clientContentP}>Forma de pago: {data.paymentType}</p>
+              <p className={styles.clientContentP}>Fecha: {data.date}</p>
             </div>
           </div>
-          <div className='div-info-sale'>
-            <p className='sale-title'>Productos</p>
-            <table className='table-sale'>
+          <div className={styles.divInfoSale}>
+            <p className={styles.saleTitle}>Productos</p>
+            <table className={styles.tableSale}>
               <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
+                  <th className={styles.tableSaleTH}>Nombre</th>
+                  <th className={styles.tableSaleTH}>Cantidad</th>
+                  <th className={styles.tableSaleTH}>Precio</th>
                 </tr>
               </thead>
               <tbody>
                 {data.orderitem.map((item, i) => (
-                  <tr className='row-item-sale' key={i}>
-                    <td>{item.productName}</td>
-                    <td>{item.quantity}</td>
-                    <td>{item.price}</td>
+                  <tr key={i}>
+                    <td className={styles.rowItemSaleTD}>{item.productName}</td>
+                    <td className={styles.rowItemSaleTD}>{item.quantity}</td>
+                    <td className={styles.rowItemSaleTD}>${item.price}</td>
                   </tr>
                 ))}
                 <tr>
                   <td></td>
-                  <td className='total'>Total: </td>
-                  <td className='total-value'>{data.total}</td>
+                  <td className={styles.total}>Total: </td>
+                  <td className={styles.totalValue}>${data.total}</td>
                 </tr>
               </tbody>
             </table>

@@ -1,0 +1,352 @@
+.main {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+/* Clases para los componentes del InfoHeader*/
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: space-evenly;
+}
+
+.divInfoP,
+.divInfoC,
+.divInfoS {
+  width: 20rem;
+  height: 4rem;
+  padding: 0.6rem 2.5rem;
+  font-size: 1.5em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.divInfoP {
+  background-color: #2a41a8;
+}
+.divInfoC {
+  background-color: #d44f41;
+}
+.divInfoS {
+  background-color: #fac710;
+}
+
+/* Clases para la seccion principal*/
+
+.sectionPrincipal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.divLeftDashboard {
+  width: 65%;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: flex-start;
+}
+
+.divBarChart {
+  width: 90%;
+  margin: 1rem;
+  padding: 0 1rem 0;
+  border: 0.5px solid gainsboro;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleBarChart {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: gainsboro .5px solid;
+}
+
+.divTitleBarChart {
+  display: flex;
+}
+
+.divSelect {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 3rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+  border-radius: .2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.select {
+  border: none;
+  appearance: none;
+  padding: 0rem 1rem;
+  width: 100%;
+  background-color: #fac710;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: .2rem;
+  cursor: pointer;
+}
+
+.select option {
+  font-weight: bold;
+}
+
+.divSelectDate {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .5px solid gainsboro;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 0 1rem 0;
+}
+
+.divContainerSearchMonth {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchMonthButton {
+  padding: .3rem .5rem;
+  background-color: #69e62f;
+  margin: .5rem;
+  color: white;
+  border: none;
+  border-radius: 25%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all .3s ease;
+}
+
+.deleteMonthButton {
+  padding: .3rem .5rem;
+  background-color: tomato;
+  margin: .5rem;
+  color: white;
+  border: none;
+  border-radius: 25%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all .3s ease;
+}
+
+.searchMonthButton:hover,
+.deleteMonthButton:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.searchMonthButton:active,
+.deleteMonthButton:active {
+  transform: scale(.95);
+  cursor: pointer;
+}
+
+.divSelectMonth {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 4rem;
+  height: 2rem;
+  margin: 1.5rem;
+  border-radius: .2rem;
+}
+
+.selectMonth {
+  border: none;
+  appearance: none;
+  padding: 0rem 2rem;
+  width: 100%;
+  background-color: #fac710;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: .5rem;
+  cursor: pointer;
+  scroll-behavior: smooth;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.titleSelectDate {
+  width: 100%;
+  padding: 1rem;
+  height: 1.5rem;
+  border-bottom: .5px solid gainsboro;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectMonth option {
+  font-weight: bold;
+  padding: .3rem 0;
+}
+
+.barChart {
+  width: 100%;
+  height: 25rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  border: 2px solid red;
+  border-radius: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 99, 71, .5);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.divPieChart {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 0 1rem 0;
+  border: .5px solid gainsboro;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.titlePieChart,
+.titleBestSeller {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: gainsboro .5px solid;
+}
+
+.pieChart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.divBestSeller {
+  width: 40%;
+  display: flex;
+  height: max-content;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 0 1rem 0;
+  border: .5px solid gainsboro;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.bestSellerList {
+  width: 100%;
+  padding: 0 1.5rem .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ulBestSeller {
+  padding: 0;
+}
+
+.liBestSeller {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid gainsboro 1px;
+}
+
+.divRightDashboard {
+  width: 35%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 1rem .5rem;
+}
+
+.divTotalSales {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: .5px solid gainsboro;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 1rem;
+}
+
+
+.titleTotalSales {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.priceTotalSales {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.divCakeChart {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .5px solid gainsboro;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 0 1rem 0;
+}
+
+.titleCakeChart {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: .5px solid gainsboro;
+}
+
+.cakeChart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}

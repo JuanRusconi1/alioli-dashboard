@@ -1,38 +1,77 @@
 'use client'
+import styles from '../../styles/productos.module.css'
 import Image from 'next/image'
-import { useState } from 'react'
 import Link from 'next/link'
 import withoutImage from '../../public/image/sinImagen.png'
+import { Toaster, toast } from 'react-hot-toast'
 
 export default function ProductCard (props) {
-  const [style, setStyle] = useState('article-producto')
+  const { setFetch } = props
+  const { id } = props
   const handleClick = (e) => {
-    const id = e.target.value
+    toast.loading('Eliminando producto')
     fetch(`http://localhost:3500/api/products/delete/${id}`)
-      .then(res => res.json)
-    setStyle('hidden')
+      .then(res => {
+        if (res.ok) {
+          toast.success('Producto eliminado correctamente')
+          setTimeout(() => {
+            setFetch(true)
+          }, 2000)
+        } else {
+          toast.error('Ocurrio un error, recarga la pagina')
+        }
+      })
   }
   return (
-    <article className={style}>
-      <div className='div-imagen-producto'>
+    <article className={styles.articleProducto}>
+      <div className={styles.divImagenProducto}>
         <Image
-          className='imagen-producto'
+          className={styles.imagenProducto}
           src={props.image === null ? withoutImage : props.pathImage}
           alt={props.name}
-          width={250}
-          height={200}
+          width={220}
+          height={150}
         />
       </div>
-      <div className='div-p'>
-        <p className='p-nombre-producto'>{props.name}</p>
-        <p className='p-precio-producto'>${props.price}</p>
+      <div className={styles.divP}>
+        <p className={styles.nombreProducto}>{props.name}</p>
+        <p className={styles.precioProducto}>${props.price}</p>
       </div>
-      <div className='div-botones-producto'>
-        <div className='boton-eliminar' value={props.id} onClick={handleClick}>Eliminar</div>
-        <Link className='boton-modificar' href={`/productos/modificar-producto/${props.id}`}>
+      <div className={styles.divBotonesProducto}>
+        <div className={styles.botonEliminar} onClick={handleClick}>Eliminar</div>
+        <Link className={styles.botonModificar} href={`/productos/modificar-producto/${props.id}`}>
           Modificar
         </Link>
       </div>
+      <Toaster
+        position='bottom-right'
+        toastOptions={{
+          success: {
+            duration: 3000,
+            position: 'bottom-right',
+            style: {
+              border: '2px solid #28a745',
+              fontWeight: 'bold'
+            }
+          },
+          error: {
+            position: 'bottom-right',
+            duration: 3000,
+            style: {
+              border: 'solid 2px tomato',
+              fontWeight: 'bold'
+            }
+          },
+          loading: {
+            position: 'bottom-right',
+            duration: 3000,
+            style: {
+              border: 'solid 2px gainsboro',
+              fontWeight: 'bold'
+            }
+          }
+        }}
+      />
     </article>
   )
 }

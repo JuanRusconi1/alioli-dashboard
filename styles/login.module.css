@@ -1,14 +1,11 @@
-* {
-  font-family: "Roboto Mono", monospace;
-}
 /* estilos para el titulo*/
-main {
+.main {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 90vh;
 }
-.div-titleMain {
+.divTitleMain {
   margin-right: 10rem;
   display: flex;
   flex-direction: column;
@@ -16,7 +13,7 @@ main {
   justify-content: center;
   transform: rotate(-7deg);
 }
-.div-titleMain p {
+.divTitleMain p {
   color: #fac710;
   font-size: 12em;
   margin: 0;
@@ -25,14 +22,15 @@ main {
   border-bottom: solid black 5px;
   height: 12.5rem;
 }
-.p-subtitleMain {
+.pSubtitleMain {
   font-size: 4em;
+  font-family: "Roboto Mono", monospace;
   margin: 0;
   text-align: center;
 }
 
 /* estilos para el contenedor del formulario */ 
-.div-form {
+.divForm {
   display: flex;
   flex-flow: column nowrap;
   border: 0.5px solid gainsboro;
@@ -44,12 +42,13 @@ main {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.p-titleLogin {
+.pTitleLogin {
   font-size: 1.7em;
   margin-bottom: 3rem;
+  font-family: "Roboto Mono", monospace;
 }
 
-.form-login {
+.formLogin {
   display: flex;
   flex-flow: column nowrap;
   gap: 2rem;
@@ -57,7 +56,7 @@ main {
 }
 
 /* estilos para los inputs*/
-.input-group {
+.inputGroup {
   position: relative;
 }
 
@@ -67,28 +66,30 @@ main {
   background: none;
   padding: 1rem;
   font-size: 1rem;
+  font-family: "Roboto Mono", monospace;
   color: black;
   font-weight: bold;
   transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.user-label {
+.userLabel {
   position: absolute;
   left: 15px;
   color: gainsboro;
   pointer-events: none;
   transform: translateY(1rem);
   transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Roboto Mono", monospace;
 }
 
 .input:focus,
-input:valid {
+.input:valid {
   outline: none;
   border: 1.5px solid #fac710;
 }
 
 .input:focus ~ label,
-input:valid ~ label {
+.input:valid ~ label {
   transform: translateY(-50%) scale(0.8);
   background-color: white;
   padding: 0 0.2em;
@@ -96,8 +97,9 @@ input:valid ~ label {
 }
 
 /* estilos para el boton*/
-button {
+.button {
   width: 70%;
+  font-family: "Roboto Mono", monospace;
   appearance: none;
   background-color: transparent;
   border: 0.125em solid #fac710;
@@ -122,18 +124,18 @@ button {
   will-change: transform;
 }
 
-button:disabled {
+.button:disabled {
   pointer-events: none;
 }
 
-button:hover {
+.button:hover {
   color: black;
   background-color: #fac710;
-  box-shadow: #fac710 0 8px 15px;
+  box-shadow: gray 0 5px 10px;
   transform: translateY(-2px);
 }
 
-button:active {
+.button:active {
   box-shadow: none;
   transform: translateY(0);
 }

@@ -1,6 +1,8 @@
+
 import Link from 'next/link'
 import '../../styles/navBar.css'
 import { Caveat } from '@next/font/google'
+import LogoutButton from './logoutButton'
 
 const caveat = Caveat({
   weigth: ['800'],
@@ -24,6 +26,7 @@ export default function NavBar () {
         <Link href='/productos'>
           <p className='link'>Productos</p>
         </Link>
+        <LogoutButton />
       </div>
     </section>
   )

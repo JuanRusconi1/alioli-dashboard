@@ -1,5 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
+import styles from '../../styles/comandasDetail.module.css'
 
 export default function SaleDetailButtons ({ id }) {
   const router = useRouter()
@@ -17,8 +18,8 @@ export default function SaleDetailButtons ({ id }) {
   }
 
   return (
-    <div className='div-buttons'>
-      <button className='button-card home' onClick={handleReturn}>
+    <div className={styles.divButtons}>
+      <button className={styles.buttonCardHome} onClick={handleReturn}>
         <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-door-enter' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
           <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
           <path d='M13 12v.01'></path>
@@ -28,7 +29,7 @@ export default function SaleDetailButtons ({ id }) {
         </svg>
         Volver al Inicio
       </button>
-      <button className='button-card delete' onClick={handleDelete}>
+      <button className={styles.buttonCardDelete} onClick={handleDelete}>
         <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-x' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
           <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
           <path d='M18 6l-12 12'></path>
@@ -36,7 +37,7 @@ export default function SaleDetailButtons ({ id }) {
         </svg>
         Eliminar
       </button>
-      <button className='button-card print'>
+      <button className={styles.buttonCardPrint}>
         <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-printer' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
           <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
           <path d='M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2'></path>

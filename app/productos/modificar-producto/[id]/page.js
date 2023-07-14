@@ -4,7 +4,7 @@ export default async function ProductoId ({ params }) {
   const { id } = params
 
   const fetchCategories = () => {
-    return fetch('http://localhost:3500/api/products/categories')
+    return fetch('http://localhost:3500/api/products/categories', { cache: 'no-store' })
       .then(res => res.json())
   }
 
