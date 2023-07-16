@@ -153,3 +153,14 @@
   border-radius: .5rem;
   border: 1px solid black;
 }
+
+@media (max-width: 1424px) {
+  .listStock {
+    margin: 2rem auto;
+    width: 80%;
+  }
+  .title {
+    width: 35%;
+    margin: 0 1rem;
+  }
+}

@@ -178,7 +178,6 @@
 /* Clases para los botones de paginación*/
 
 .numberList {
-
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -231,4 +230,21 @@
 /* Clases interactivas */
 .hidden {
   display: none;
+
+}
+
+@media (max-width: 1424px) {
+  .main {
+    width: 85%;
+    min-height: 51rem;
+    height: max-content;
+  }
+  .sectionSaleList {
+    width: 100%;
+    gap: .8rem;
+  }
+  .numberList {
+    bottom: -10rem;
+    margin: 1rem 0;
+  }
 }

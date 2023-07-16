@@ -82,3 +82,10 @@
   box-shadow: none;
   transform: translateY(0);
 }
+
+@media (max-width: 1424px) {
+  .formAñadirProducto {
+    width: 35%;
+    margin: 2rem 0;
+  }
+}

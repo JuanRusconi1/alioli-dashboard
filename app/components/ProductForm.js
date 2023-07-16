@@ -6,9 +6,9 @@ import { Toaster, toast } from 'react-hot-toast'
 export default function ProductForm (props) {
   const router = useRouter()
   const { oldData, request } = props
-  const [name, setName] = useState(oldData !== undefined ? oldData.name : '')
-  const [price, setPrice] = useState(oldData !== undefined ? oldData.price : '')
-  const [description, setDescription] = useState(oldData !== undefined ? oldData.description : '')
+  const [name, setName] = useState(oldData !== undefined ? oldData.name : null)
+  const [price, setPrice] = useState(oldData !== undefined ? oldData.price : null)
+  const [description, setDescription] = useState(oldData !== undefined ? oldData.description : null)
   const [category, setCategory] = useState(oldData !== undefined ? oldData.categoryId : '1')
   const [image, setImage] = useState(null)
 
@@ -19,16 +19,17 @@ export default function ProductForm (props) {
     setCategory('1')
     setImage(null)
   }
-  const handleSubmit = (e) => {
+  console.log(oldData)
+  function handleSubmit (e) {
     e.preventDefault()
-    if (name.length === 0) {
+    if (!name) {
       toast.error('El producto debe tener un nombre')
     }
-    if (price.length === 0) {
+    if (!price) {
       toast.error('El producto debe tener un precio')
     }
-
-    if (name.length > 0 && price.length > 0) {
+    if (name && price) {
+      console.log('entro')
       toast.loading('Cargando producto')
       const formData = new FormData()
       formData.append('name', name)
@@ -42,6 +43,7 @@ export default function ProductForm (props) {
       }).then(res => res.json())
         .then(res => {
           if (res.ok) {
+            console.log(res)
             toast.success('Producto cargado correctamente')
             setTimeout(() => {
               resetInputs()
@@ -55,7 +57,7 @@ export default function ProductForm (props) {
   }
   return (
     <div className={styles.divForm}>
-      <form className={styles.formAñadirProducto} onSubmit={handleSubmit}>
+      <form className={styles.formAñadirProducto}>
         <div className={styles.divInput}>
           <label htmlFor='name'>Nombre del producto</label>
           <input
@@ -107,7 +109,6 @@ export default function ProductForm (props) {
             ))}
           </select>
         </div>
-
         <div className={styles.divFile}>
           <label htmlFor='image'>Imagen</label>
           <input
@@ -117,7 +118,7 @@ export default function ProductForm (props) {
             onChange={(e) => { setImage(e.target.files[0]) }}
           />
         </div>
-        <button className={styles.button} type='submit'>{oldData !== undefined ? 'Modificar' : 'Agregar producto'}</button>
+        <button className={styles.button} onClick={handleSubmit}>{oldData !== undefined ? 'Modificar' : 'Agregar producto'}</button>
       </form>
       <Toaster
         position='bottom-right'

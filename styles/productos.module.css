@@ -106,12 +106,13 @@
   height: 310px;
   padding: 1rem 0.5rem;
   transition: all 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+  rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
 }
 
 .articleProducto:hover {
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .divImagenProducto {
@@ -141,6 +142,7 @@
 .precioProducto {
   margin: 0.5rem 0;
   font-size: 1em;
+  text-align: center;
 }
 
 .divBotonesProducto {
@@ -225,7 +227,22 @@
   background-color: #FAC82F;
 }
 
-/* Clases interactivas*/
-.hidden {
-  display: none;
+
+@media (max-width: 1424px) {
+  .mainProductos {
+    width: 90%;
+    min-height: 51rem;
+  }
+  .articleProducto {
+    width: 13rem;
+  }
+  .divImagenProducto {
+    width: 12.5rem;
+    margin-right: .2rem;
+  }
+  .botonEliminar,
+  .botonModificar {
+    width: 6rem;
+    font-size: .95rem;
+  }
 }

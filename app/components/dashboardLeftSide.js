@@ -19,7 +19,7 @@ export default function DashboardLefttSide ({ sales, filter, filteredSales, erro
   const [year, setYear] = useState(2023)
   const yearsOptions = () => {
     const array = []
-    const startYear = 2022
+    const startYear = 2023
     const endYear = new Date().getFullYear()
     for (let i = startYear; i <= endYear; i++) {
       array.push(i)

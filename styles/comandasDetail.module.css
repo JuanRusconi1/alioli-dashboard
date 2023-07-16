@@ -148,3 +148,13 @@
   background-color: #68b5f5;
   border: #68b5f5 solid 1px;
 }
+
+@media (max-width: 1424px) {
+  .main {
+    height: max-content;
+  }
+  .divCard {
+    width: 75%;
+    margin: 2rem 0;
+  }
+}
