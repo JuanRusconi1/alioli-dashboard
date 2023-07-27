@@ -26,7 +26,7 @@ export default function SaleCard (props) {
         <p>Total: ${props.total}</p>
       </div>
       <div className={styles.divDownInfo}>
-        <p>Nombre: {props.buyerName}</p>
+        <p>N°:{props.id}</p>
         <div className={styles.divButtonCard}>
           <div className={styles.buttonCardDelete} onClick={handleDelete}>Eliminar</div>
           <Link href={`/comandas/detalle/${props.id}`} className={styles.buttonCardDetail}>Detalle</Link>

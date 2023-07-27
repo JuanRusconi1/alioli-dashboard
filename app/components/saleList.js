@@ -11,7 +11,6 @@ export default function SaleList () {
   const [date, setDate] = useState('')
   const [maxPage, setMaxPage] = useState()
   const [pagButton, setPagButton] = useState(styles.numberList)
-  // const sales = await getFetchSales()
 
   useEffect(() => {
     fetch(`http://localhost:3500/api/sales/page/${page}`)
@@ -20,6 +19,7 @@ export default function SaleList () {
         if (sales.ok) {
           setData(sales.data)
           setMaxPage(sales.totalPages)
+          setFetch(false)
         } else {
           setData({ errorMessage: `No hay Comandas en esta pagina (pagina: ${page})` })
         }

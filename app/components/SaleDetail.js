@@ -14,6 +14,7 @@ export default async function SaleDetail ({ id }) {
           <div className={styles.divInfoClient}>
             <p className={styles.clientTitle}>Datos del cliente</p>
             <div className={styles.clientContent}>
+              <p className={styles.clientContentP}>N° de comanda: {data.id}</p>
               <p className={styles.clientContentP}>Nombre: {data.buyerName}</p>
               <p className={styles.clientContentP}>Numero de telefono: {data.phoneNumber}</p>
               <p className={styles.clientContentP}>Forma de pago: {data.paymentType}</p>

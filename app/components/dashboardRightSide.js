@@ -10,16 +10,17 @@ const totalValue = (sales) => {
 }
 
 export default function DashboardRightSide ({ sales, categories, changeFilter, filter, filteredSales, error }) {
+  const [search, changeSearch] = useState(false)
   return (
     <div className={styles.divRightDashboard}>
       <div className={styles.divSelectDate}>
         <div className={styles.titleSelectDate}>
-          <p>Buscar por mes</p>
+          <div>Buscar por <button className={styles.buttonDate} style={search ? { backgroundColor: '#fac710' } : null} onClick={(e) => { changeSearch(true) }}>mes</button> / <button className={styles.buttonDate} style={!search ? { backgroundColor: '#fac710' } : null} onClick={(e) => { changeSearch(false) }}>día</button></div>
           {filter
             ? <p>{filter}</p>
             : null}
         </div>
-        <SelectDate changeFilter={changeFilter} />
+        <SelectMonth changeFilter={changeFilter} search={search} />
       </div>
       <div className={styles.divTotalSales}>
         <p className={styles.titleTotalSales}>Ingresos totales por ventas</p>
@@ -39,8 +40,8 @@ export default function DashboardRightSide ({ sales, categories, changeFilter, f
   )
 }
 
-function SelectDate ({ changeFilter }) {
-  const [month, setMonth] = useState('')
+function SelectMonth ({ changeFilter, search }) {
+  const [date, setDate] = useState('')
   const optionsMonths = () => {
     const date = new Date()
     const months = [
@@ -78,25 +79,34 @@ function SelectDate ({ changeFilter }) {
   return (
     <div className={styles.divContainerSearchMonth}>
       <div className={styles.divSelectMonth}>
-        <select className={styles.selectMonth} onChange={(e) => setMonth(e.target.value)}>
-          {optionsMonths().map((month, i) => (
-            <option
-              key={i}
-              value={month.value}
-            >
-              {month.date}
-            </option>
-          ))}
-        </select>
+        {search
+          ? <select className={styles.selectMonth} onChange={(e) => setDate(e.target.value)}>
+            {optionsMonths().map((month, i) => (
+              <option
+                key={i}
+                value={month.value}
+              >
+                {month.date}
+              </option>
+            ))}
+          </select>
+          : <input
+              type='date'
+              className={styles.inputDate}
+              placeholder='Lomo Completo...'
+              autocomplete='off'
+              onChange={(e) => setDate(e.target.value)}
+            />}
       </div>
-      <button className={styles.searchMonthButton} onClick={() => changeFilter(month)}>
+      <div className={styles.divButtonsDate}>
+      <button className={styles.dateButton} onClick={() => changeFilter(date)}>
         <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-search' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
           <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
           <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0'></path>
           <path d='M21 21l-6 -6'>.</path>
         </svg>
       </button>
-      <button className={styles.deleteMonthButton} onClick={() => changeFilter('')}>
+      <button className={styles.dateButton} style={{borderRadius: '0 .5rem .5rem 0'}} onClick={() => changeFilter('')}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           class='icon icon-tabler icon-tabler-x'
@@ -114,6 +124,7 @@ function SelectDate ({ changeFilter }) {
           <path d='M6 6l12 12'></path>
         </svg>
       </button>
+      </div>
     </div>
   )
 }
