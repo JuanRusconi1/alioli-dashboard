@@ -6,9 +6,10 @@ export default async function agregarComandaPage () {
       .then(res => res.json())
   }
   const products = await productsFetch()
+  const fetchRequest = 'http://localhost:3500/api/sales/create'
   return (
     <>
-      <SaleForm {...products} />
+      <SaleForm data={products.data} request={fetchRequest} />
     </>
   )
 }

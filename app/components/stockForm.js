@@ -28,6 +28,8 @@ export default function StockForm ({ setFetch }) {
         }
       }).then(res => {
         if (res.ok) {
+          setQuantity('')
+          setName('')
           toast.success('Fila agregada')
           setTimeout(() => {
             setFetch(true)
@@ -40,11 +42,11 @@ export default function StockForm ({ setFetch }) {
     <div className={styles.stockForm}>
       <div className={styles.inputLabelStock}>
         <label htmlFor='name'>Nombre:</label>
-        <input className={styles.inputSubmit} type='text' id='name' onChange={(e) => { setName(e.target.value) }} />
+        <input className={styles.inputSubmit} type='text' id='name' onChange={(e) => { setName(e.target.value) }} value={inputName} />
       </div>
       <div className={styles.inputLabelStock}>
         <label htmlFor='quantity'>Cantidad:</label>
-        <input className={styles.inputSubmit} type='text' id='quantity' onChange={(e) => { setQuantity(e.target.value) }} />
+        <input className={styles.inputSubmit} type='text' id='quantity' onChange={(e) => { setQuantity(e.target.value) }} value={inputQuantity} />
       </div>
       <div>
         <button className={styles.submitButton} onClick={handleSubmit}>

@@ -1,49 +1,113 @@
 'use client'
 import styles from '../../styles/comandasCreate.module.css'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { Toaster, toast } from 'react-hot-toast'
 const valorTotal = (productos) => {
   return productos.reduce((acum, product) => acum += product.price * product.quantity, 0)
 }
-const detail = []
 
-export default function SaleForm (props) {
-  const [product, setProduct] = useState(props.data[0].name)
+export default function SaleForm ({ data, request, oldData }) {
+  const detailRef = useRef(oldData ? oldData.orderitem : [])
+  const detail = detailRef.current
+  const [render, setRender] = useState(false)
+  const [product, setProduct] = useState(data[0].name)
   const [quantity, setQuantity] = useState(1)
-  const [productPrice, setPrice] = useState(props.data[0].price)
-  const [name, setName] = useState('')
-  const [number, setNumber] = useState('')
-  const [payment, setPayment] = useState('Efectivo')
-  const [category, setCategory] = useState(props.data[0].categories.name)
+  const [productPrice, setPrice] = useState(data[0].price)
+  const [name, setName] = useState(oldData ? oldData.buyerName : null)
+  const [number, setNumber] = useState(oldData ? oldData.phoneNumber : null)
+  const [payment, setPayment] = useState(oldData ? oldData.paymentType : 'Efectivo')
+  const [category, setCategory] = useState(data[0].categories.name)
+  const [showVariety, setVariety] = useState(false)
+  const formRef = useRef(null)
+
   const router = useRouter()
   const paymentTypes = [
     'Efectivo',
     'Transferencia',
     'Tarjeta'
   ]
-
-  const resetInfoProducts = () => {
-    setProduct('')
-    setQuantity(1)
-    setPrice(0)
+  const empanadas = () => {
+    const empanadas = data.filter(product => product.categoryId === 6 && product.id !== 42)
+    return empanadas
   }
   const handleChange = (e) => {
-    const id = e.target.value
-    const productToFind = props.data.find(product => product.id == id)
+    const productToFind = data.find(product => product.id === parseInt(e.target.value))
     setProduct(productToFind.name)
     setPrice(productToFind.price)
     setCategory(productToFind.categories.name)
+
+    if (productToFind.id === 42 || productToFind.name.toLowerCase() === 'docena de empanadas') {
+      setVariety(true)
+    } else setVariety(false)
+  }
+
+  const handleRemoveDetail = (i) => {
+    detail.splice(i, 1)
+    setRender(!render)
+  }
+  const addDocenaToDetail = () => {
+    const form = formRef.current
+    if (product.toLowerCase() === 'docena de empanadas') {
+      const empasDetail = []
+      let sumDocena = 0
+      for (let i = 0; i < form.length; i++) {
+        if (form[i].name.toLowerCase().includes('empanada') && form[i].value > 0) {
+          empasDetail.push({ name: form[i].name, quantity: parseInt(form[i].value) })
+          sumDocena += parseInt(form[i].value)
+        }
+      }
+      if (sumDocena === quantity * 12) {
+        detail.push({
+          productName: product,
+          productCategory: category,
+          price: productPrice,
+          quantity: quantity,
+          docena: empasDetail
+        })
+        setRender(!render)
+        return true
+      } else {
+        const residuo = (quantity * 12) - sumDocena
+        toast.error(`${residuo > 0 ? `Te faltan ${residuo}` : `Te sobran ${Math.abs(residuo)}`} empanada/s para completar ${quantity > 1 ? 'la docena' : 'las docenas'}`)
+      }
+      return false
+    }
+    return false
   }
   const handleDetail = (e) => {
     e.preventDefault()
-    detail.push({
-      productName: product,
-      productCategory: category,
-      price: productPrice,
-      quantity: quantity
-    })
-    resetInfoProducts()
+    if (product.toLowerCase() === 'docena de empanadas') addDocenaToDetail()
+    else {
+      if (detail.length) {
+        let index = -1
+        for (let i = 0; i < detail.length; i++) {
+          if (detail[i].productName === product) {
+            index = i
+          }
+        }
+        if (index >= 0) {
+          detail[index].quantity += quantity
+          setRender(!render)
+        } else {
+          detail.push({
+            productName: product,
+            productCategory: category,
+            price: productPrice,
+            quantity: quantity
+          })
+          setRender(!render)
+        }
+      } else {
+        detail.push({
+          productName: product,
+          productCategory: category,
+          price: productPrice,
+          quantity: quantity
+        })
+        setRender(!render)
+      }
+    }
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -62,7 +126,7 @@ export default function SaleForm (props) {
         total: valorTotal(detail)
       }
       toast.loading('Cargando comanda')
-      fetch('http://localhost:3500/api/sales/create', {
+      fetch(request, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -71,17 +135,12 @@ export default function SaleForm (props) {
       }).then(res => res.json())
         .then(res => {
           if (res.ok) {
-            toast.success('Comanda cargada correctamente', {
-              duration: 3000,
-              position: 'bottom-right',
-              style: {
-                border: '2px solid #28a745'
-              }
-            })
+            toast.success('Comanda cargada correctamente')
+            console.log(res.order)
             setTimeout(() => {
               router.push(`/comandas/detalle/${res.order.id}`)
               detail.splice(0, detail.length)
-            }, 2000)
+            }, 1000)
           } else {
             toast.error('Ocurrio un error, Reinicie la pagina')
           }
@@ -91,10 +150,10 @@ export default function SaleForm (props) {
 
   return (
     <div className={styles.contendorForm}>
-      <form className={styles.saleForm}>
+      <form className={styles.saleForm} ref={formRef}>
         <div className={styles.divFormClient}>
           <label htmlFor='name'>Nombre del cliente</label>
-          <input className={styles.divFormClientInput} type='text' name='name' id='name' onBlur={(e) => setName(e.target.value)} />
+          <input className={styles.divFormClientInput} type='text' name='name' id='name' value={name} onChange={(e) => setName(e.target.value)} />
 
           <label htmlFor='paymentType'>Forma de pago</label>
           <select className={styles.select} id='paymentType' name='paymentType' onChange={(e) => setPayment(e.target.value)}>
@@ -109,12 +168,12 @@ export default function SaleForm (props) {
           </select>
 
           <label htmlFor='phoneNumber'>Numero de telefono</label>
-          <input className={styles.divFormClientInput} type='number' name='phoneNumber' id='phoneNumber' onBlur={(e) => setNumber(e.target.value)} />
+          <input className={styles.divFormClientInput} type='number' name='phoneNumber' id='phoneNumber' value={number} onChange={(e) => setNumber(e.target.value)} />
         </div>
         <div className={styles.divFormProducts}>
           <label htmlFor='product'>Producto</label>
           <select className={styles.select} id='product' name='product' onChange={handleChange}>
-            {props.data.map(product => (
+            {data.map(product => (
               <option
                 key={product.id}
                 value={product.id}
@@ -123,12 +182,22 @@ export default function SaleForm (props) {
               </option>
             ))}
           </select>
+          {showVariety && <div className={styles.divVariety}>
+            <ul>
+              {empanadas().map((empa, i) => (
+                <li className={styles.liInput} key={i}>
+                  <input className={styles.inputEmpanada} id={empa.id} type='number' name={empa.name} />
+                  <p>x {empa.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>}
 
           <label htmlFor='price'>Precio</label>
           <input className={styles.divFormProductsInput} id='price' name='price' type='number' value={productPrice} onChange={(e) => setPrice(e.target.value)} />
 
           <label htmlFor='quantity'>Cantidad</label>
-          <input className={styles.divFormProductsInput} id='quantity' type='number' name='quantity' value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+          <input className={styles.divFormProductsInput} id='quantity' type='number' name='quantity' value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} />
           <div className={styles.divButtons}>
             <button className={styles.button} onClick={handleDetail}>Añadir producto</button>
             <button className={styles.button} onClick={handleSubmit}>Crear comanda</button>
@@ -143,10 +212,20 @@ export default function SaleForm (props) {
             <li className={styles.li}>Telefono: {number}</li>
           </ul>
         </div>
-        <div>
-          <ul>
-            {detail.length > 0 && detail.map((product, i) => (
-              <li key={i}>{product.productName} x{product.quantity}  ${product.price} </li>
+        <div className={styles.orderPreviewProductList}>
+          <ul className={styles.ul}>
+            {detail && detail.map((product, i) => (
+              <li key={i} className={styles.liProductOrderPreview}>
+                <div key={i}><button className={styles.buttonRemove} onClick={() => handleRemoveDetail(i)}>X</button> {product.productName} x{product.quantity} ${product.price}</div>
+                {
+                product.docena &&
+                  <div>
+                    {product.docena.map((empanada, i) => (
+                      <p className={styles.pEmpanada} key={i}>{empanada.name} x{empanada.quantity}</p>
+                    ))}
+                  </div>
+                }
+              </li>
             ))}
           </ul>
           {detail.length > 0 && <div className={styles.valorTotal}>Total: ${valorTotal(detail)}</div>}

@@ -107,7 +107,7 @@
   justify-content: flex-end;
 }
 
-.buttonCardHome, .buttonCardDelete, .buttonCardPrint {
+.buttonCardHome, .buttonCardDelete, .buttonCardPrint, .buttonCardUpdate {
   display: flex;
   text-align: left;
   align-items: center;
@@ -121,12 +121,12 @@
   opacity: .8;
 }
 
-.buttonCardHome:hover, .buttonCardDelete:hover, .buttonCardPrint:hover {
+.buttonCardHome:hover, .buttonCardDelete:hover, .buttonCardPrint:hover, .buttonCardUpdate:hover {
   transform: translateY(-3px);
   opacity: 1.2;
 }
 
-.buttonCardHome:active, .buttonCardDelete:active, .buttonCardPrint:active {
+.buttonCardHome:active, .buttonCardDelete:active, .buttonCardPrint:active, .buttonCardUpdate:active {
   transform: scale(.95);
 }
 
@@ -137,6 +137,11 @@
 .buttonCardHome {
   background-color: #fac710;
   border: #fac710 solid 1px;
+}
+
+.buttonCardUpdate {
+  background-color: gainsboro;
+  border: gainsboro solid 1px;
 }
 
 .buttonCardDelete {

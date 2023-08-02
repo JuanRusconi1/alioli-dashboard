@@ -3,7 +3,7 @@ import SaleDetailButtons from './saleDetailButtons'
 
 export default async function SaleDetail ({ id }) {
   const orderFetch = () => {
-    return fetch(`http://localhost:3500/api/sales/detail/${id}`)
+    return fetch(`http://localhost:3500/api/sales/detail/${id}`, { cache: 'no-store' })
       .then(res => res.json())
   }
   const { data } = await orderFetch()
