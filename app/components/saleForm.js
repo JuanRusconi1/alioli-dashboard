@@ -28,7 +28,7 @@ export default function SaleForm ({ data, request, oldData }) {
     'Tarjeta'
   ]
   const empanadas = () => {
-    const empanadas = data.filter(product => product.categoryId === 6 && product.id !== 42)
+    const empanadas = data.filter(product => product.categoryId === 6 && product.id !== 42  && !product.name.toLowerCase().includes('champiñones') && !product.name.toLowerCase().includes('media docena'))
     return empanadas
   }
   const handleChange = (e) => {
@@ -117,7 +117,7 @@ export default function SaleForm ({ data, request, oldData }) {
     if (detail.length === 0) {
       toast.error('La comanda debe tener mínimo un producto')
     }
-    if (name.length > 0 && detail.length > 0) {
+    if (name && name.length > 0 && detail.length > 0) {
       const formData = {
         orderitem: detail,
         buyerName: name,

@@ -34,7 +34,31 @@ export default async function SaleDetail ({ id }) {
               <tbody>
                 {data.orderitem.map((item, i) => (
                   <tr key={i}>
-                    <td className={styles.rowItemSaleTD}>{item.productName}</td>
+                    {/* <td className={styles.rowItemSaleTD}>{item.productName}</td> */}
+                    {item.docena && item.docena.length 
+                    ? <td className={styles.rowItemSaleDocena}>{item.productName} 
+                        <div className={styles.divButtonList}>
+                          <button className={styles.buttonDetailDocena}>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M13 5h8"></path>
+                            <path d="M13 9h5"></path>
+                            <path d="M13 15h8"></path>
+                            <path d="M13 19h5"></path>
+                            <path d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                            <path d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                          </svg>
+                          </button>
+                          <div className={styles.divDocenaDetail}>
+                            <ul className={styles.docenaList}>
+                              {item.docena.map((empanada) => (
+                                <li>{empanada.name} x{empanada.quantity}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                    </td> 
+                    : <td className={styles.rowItemSaleTD}>{item.productName}</td>}
                     <td className={styles.rowItemSaleTD}>{item.quantity}</td>
                     <td className={styles.rowItemSaleTD}>${item.price}</td>
                   </tr>

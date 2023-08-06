@@ -10,11 +10,11 @@ export async function middleware (request) {
     }
     return NextResponse.redirect(new URL('/', request.url))
   }
+  
   try {
     const key = new TextEncoder().encode(process.env.SECRET_KEY_JWT)
     const { payload } = await jwtVerify(tokenAuth, key)
-
-    if (request.nextUrl.pathname === '/') {
+    if (request.nextUrl.pathname === '/' && !payload) {
       return NextResponse.redirect(new URL('/principal', request.url))
     }
   } catch (error) {

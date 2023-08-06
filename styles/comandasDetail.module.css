@@ -94,13 +94,66 @@
   border: 1px solid gainsboro;
 }
 
+.rowItemSaleDocena {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: .5rem;
+  border: 1px solid gainsboro;
+}
+
+.divButtonList {
+  position: relative;
+}
+
+.divButtonList .divDocenaDetail {
+  display: none;
+  list-style: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  width: 20rem;
+}
+
+.divButtonList:hover .divDocenaDetail {
+  display: block;
+  z-index: 100;
+}
+
+.docenaList {
+  list-style: none;
+  text-align: start;
+  padding: .5rem .7rem;
+  margin: 0;
+}
+
+.docenaList li {
+  margin: .2rem;
+}
+
+.buttonDetailDocena {
+  background-color: gainsboro;
+  border: none;
+  border-radius: 25%;
+  padding: .2rem .4rem;
+  text-align: center;
+  opacity: .7;
+}
+
+.buttonDetailDocena:hover {
+  opacity: 1;
+  background-color: #fac710;
+  
+}
+
 .total, .totalValue {
   text-align: center;
   padding: .5rem;
   font-weight: bold;
 }
-
-
 
 .divButtons {
   display: flex;
