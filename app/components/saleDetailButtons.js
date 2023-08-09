@@ -8,8 +8,18 @@ export default function SaleDetailButtons ({ id }) {
   }
 
   const handleDelete = () => {
-    fetch(`http://localhost:3500/api/sales/delete/${id}`)
+    fetch('http://localhost:3500/api/sales/delete', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: id,
+        secret: 'admin'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
       .then(res => {
+        console.log(res)
         if (res.ok) {
           router.push('/comandas')
         }

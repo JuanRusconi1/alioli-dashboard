@@ -9,8 +9,16 @@ export default function ProductCard (props) {
   const { setFetch } = props
   const { id } = props
   const handleClick = (e) => {
-    toast.loading('Eliminando producto')
-    fetch(`http://localhost:3500/api/products/delete/${id}`)
+    fetch('http://localhost:3500/api/products/delete', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: id,
+        secret: 'admin'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
       .then(res => {
         if (res.ok) {
           toast.success('Producto eliminado correctamente')
@@ -59,14 +67,6 @@ export default function ProductCard (props) {
             duration: 3000,
             style: {
               border: 'solid 2px tomato',
-              fontWeight: 'bold'
-            }
-          },
-          loading: {
-            position: 'bottom-right',
-            duration: 3000,
-            style: {
-              border: 'solid 2px gainsboro',
               fontWeight: 'bold'
             }
           }

@@ -141,6 +141,7 @@
   padding: .2rem .4rem;
   text-align: center;
   opacity: .7;
+  cursor: pointer;
 }
 
 .buttonDetailDocena:hover {

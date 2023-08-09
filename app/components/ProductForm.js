@@ -19,7 +19,6 @@ export default function ProductForm (props) {
     setCategory('1')
     setImage(null)
   }
-  console.log(oldData)
   function handleSubmit (e) {
     e.preventDefault()
     if (!name) {
@@ -29,8 +28,6 @@ export default function ProductForm (props) {
       toast.error('El producto debe tener un precio')
     }
     if (name && price) {
-      console.log('entro')
-      toast.loading('Cargando producto')
       const formData = new FormData()
       formData.append('name', name)
       formData.append('price', price)
@@ -43,7 +40,6 @@ export default function ProductForm (props) {
       }).then(res => res.json())
         .then(res => {
           if (res.ok) {
-            console.log(res)
             toast.success('Producto cargado correctamente')
             setTimeout(() => {
               resetInputs()
@@ -136,14 +132,6 @@ export default function ProductForm (props) {
             duration: 3000,
             style: {
               border: 'solid 2px tomato',
-              fontWeight: 'bold'
-            }
-          },
-          loading: {
-            position: 'bottom-right',
-            duration: 3000,
-            style: {
-              border: 'solid 2px gainsboro',
               fontWeight: 'bold'
             }
           }

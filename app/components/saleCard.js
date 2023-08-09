@@ -5,8 +5,16 @@ import { Toaster, toast } from 'react-hot-toast'
 export default function SaleCard (props) {
   const { setFetch } = props
   const handleDelete = () => {
-    toast.loading('Eliminando comanda')
-    fetch(`http://localhost:3500/api/sales/delete/${props.id}`)
+    fetch('http://localhost:3500/api/sales/delete', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: props.id,
+        secret: 'admin'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
       .then(res => {
         if (res.ok) {
           toast.success('Comanda eliminada correctamente')
@@ -48,14 +56,6 @@ export default function SaleCard (props) {
             duration: 3000,
             style: {
               border: 'solid 2px tomato',
-              fontWeight: 'bold'
-            }
-          },
-          loading: {
-            position: 'bottom-right',
-            duration: 3000,
-            style: {
-              border: 'solid 2px gainsboro',
               fontWeight: 'bold'
             }
           }

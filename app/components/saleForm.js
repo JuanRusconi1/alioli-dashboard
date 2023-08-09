@@ -38,7 +38,10 @@ export default function SaleForm ({ data, request, oldData }) {
     setCategory(productToFind.categories.name)
 
     if (productToFind.id === 42 || productToFind.name.toLowerCase() === 'docena de empanadas') {
-      setVariety(true)
+      return setVariety(true)
+    } else setVariety(false)
+    if (productToFind.name.toLowerCase() === 'media docena de empanadas') {
+      return setVariety(true)
     } else setVariety(false)
   }
 
@@ -48,8 +51,10 @@ export default function SaleForm ({ data, request, oldData }) {
   }
   const addDocenaToDetail = () => {
     const form = formRef.current
-    if (product.toLowerCase() === 'docena de empanadas') {
+    let quantityEmpanadas = 12
+    if (product.toLowerCase() === 'docena de empanadas' || product.toLowerCase() === 'media docena de empanadas') {
       const empasDetail = []
+      product.toLowerCase() === 'media docena de empanadas' ? quantityEmpanadas = 6 : quantityEmpanadas = 12
       let sumDocena = 0
       for (let i = 0; i < form.length; i++) {
         if (form[i].name.toLowerCase().includes('empanada') && form[i].value > 0) {
@@ -57,7 +62,7 @@ export default function SaleForm ({ data, request, oldData }) {
           sumDocena += parseInt(form[i].value)
         }
       }
-      if (sumDocena === quantity * 12) {
+      if (sumDocena === quantity * quantityEmpanadas) {
         detail.push({
           productName: product,
           productCategory: category,
@@ -68,7 +73,7 @@ export default function SaleForm ({ data, request, oldData }) {
         setRender(!render)
         return true
       } else {
-        const residuo = (quantity * 12) - sumDocena
+        const residuo = (quantity * quantityEmpanadas) - sumDocena
         toast.error(`${residuo > 0 ? `Te faltan ${residuo}` : `Te sobran ${Math.abs(residuo)}`} empanada/s para completar ${quantity > 1 ? 'la docena' : 'las docenas'}`)
       }
       return false
@@ -77,7 +82,7 @@ export default function SaleForm ({ data, request, oldData }) {
   }
   const handleDetail = (e) => {
     e.preventDefault()
-    if (product.toLowerCase() === 'docena de empanadas') addDocenaToDetail()
+    if (product.toLowerCase() === 'docena de empanadas' || product.toLowerCase() === 'media docena de empanadas') addDocenaToDetail()
     else {
       if (detail.length) {
         let index = -1
@@ -125,7 +130,6 @@ export default function SaleForm ({ data, request, oldData }) {
         paymentType: payment,
         total: valorTotal(detail)
       }
-      toast.loading('Cargando comanda')
       fetch(request, {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -136,7 +140,6 @@ export default function SaleForm ({ data, request, oldData }) {
         .then(res => {
           if (res.ok) {
             toast.success('Comanda cargada correctamente')
-            console.log(res.order)
             setTimeout(() => {
               router.push(`/comandas/detalle/${res.order.id}`)
               detail.splice(0, detail.length)
@@ -247,14 +250,6 @@ export default function SaleForm ({ data, request, oldData }) {
             duration: 3000,
             style: {
               border: 'solid 2px tomato',
-              fontWeight: 'bold'
-            }
-          },
-          loading: {
-            position: 'bottom-right',
-            duration: 3000,
-            style: {
-              border: 'solid 2px gainsboro',
               fontWeight: 'bold'
             }
           }
