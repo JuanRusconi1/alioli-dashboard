@@ -167,6 +167,36 @@
   transform: scale(0.9);
 }
 
+.buttonToastRefuse, 
+.buttonToastConfirm {
+  font-weight: bold;
+  padding: .2rem .7rem;
+  background-color: transparent;
+  border-radius: .5rem;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  transition: all ease .3s;
+}
+
+.buttonToastRefuse {
+  border: solid 2px tomato;
+}
+
+.buttonToastConfirm {
+  border: 2px solid #28a745;
+}
+
+.buttonToastRefuse:hover {
+  background-color: tomato;
+  opacity: .8;
+}
+
+.buttonToastConfirm:hover {
+  background-color: #28a745;
+  opacity: .8;
+}
+
 .errorMessage {
   color: tomato;
   font-weight: bold;

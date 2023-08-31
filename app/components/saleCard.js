@@ -17,7 +17,7 @@ export default function SaleCard (props) {
     }).then(res => res.json())
       .then(res => {
         if (res.ok) {
-          toast.success('Comanda eliminada correctamente')
+          toast.success(`Comanda N°${props.id} eliminada correctamente`)
           setTimeout(() => {
             setFetch(true)
           }, 2000)
@@ -26,7 +26,27 @@ export default function SaleCard (props) {
         }
       })
   }
-
+  const handleConfirmDelete = () => {
+    toast((t) => (
+      <span>
+        ¿Quieres eliminar la comanda N°{props.id}?
+        <button className={styles.buttonToastConfirm} onClick={() => {
+          handleDelete()
+          toast.dismiss(t.id)
+          }}>
+          Si
+        </button>
+        <button className={styles.buttonToastRefuse} onClick={() => toast.dismiss(t.id)}>
+          No
+        </button>
+      </span>
+    ), {
+      style: {
+        border: '2px solid gainsboro',
+        fontWeight: 'bold',
+      },
+    })
+  }
   return (
     <article className={styles.articleSale}>
       <div className={styles.divUpInfo}>
@@ -36,7 +56,7 @@ export default function SaleCard (props) {
       <div className={styles.divDownInfo}>
         <p>N°:{props.id}</p>
         <div className={styles.divButtonCard}>
-          <div className={styles.buttonCardDelete} onClick={handleDelete}>Eliminar</div>
+          <div className={styles.buttonCardDelete} onClick={handleConfirmDelete}>Eliminar</div>
           <Link href={`/comandas/detalle/${props.id}`} className={styles.buttonCardDetail}>Detalle</Link>
         </div>
       </div>

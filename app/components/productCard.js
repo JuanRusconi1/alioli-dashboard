@@ -8,7 +8,7 @@ import { Toaster, toast } from 'react-hot-toast'
 export default function ProductCard (props) {
   const { setFetch } = props
   const { id } = props
-  const handleClick = (e) => {
+  const handleDelete = () => {
     fetch('http://localhost:3500/api/products/delete', {
       method: 'POST',
       body: JSON.stringify({
@@ -21,7 +21,7 @@ export default function ProductCard (props) {
     }).then(res => res.json())
       .then(res => {
         if (res.ok) {
-          toast.success('Producto eliminado correctamente')
+          toast.success(`"${props.name}" eliminado correctamente`)
           setTimeout(() => {
             setFetch(true)
           }, 2000)
@@ -29,6 +29,27 @@ export default function ProductCard (props) {
           toast.error('Ocurrio un error, recarga la pagina')
         }
       })
+  }
+  const handleConfirmDelete = () => {
+    toast((t) => (
+      <span>
+        ¿Quieres eliminar "{props.name}"?
+        <button className={styles.buttonToastConfirm} onClick={() => {
+          handleDelete()
+          toast.dismiss(t.id)
+          }}>
+          Si
+        </button>
+        <button className={styles.buttonToastRefuse} onClick={() => toast.dismiss(t.id)}>
+          No
+        </button>
+      </span>
+    ), {
+      style: {
+        border: '2px solid gainsboro',
+        fontWeight: 'bold',
+      },
+    })
   }
   return (
     <article className={styles.articleProducto}>
@@ -46,7 +67,7 @@ export default function ProductCard (props) {
         <p className={styles.precioProducto}>${props.price}</p>
       </div>
       <div className={styles.divBotonesProducto}>
-        <div className={styles.botonEliminar} onClick={handleClick}>Eliminar</div>
+        <div className={styles.botonEliminar} onClick={handleConfirmDelete}>Eliminar</div>
         <Link className={styles.botonModificar} href={`/productos/modificar-producto/${props.id}`}>
           Modificar
         </Link>
